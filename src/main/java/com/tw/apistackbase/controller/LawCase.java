@@ -19,7 +19,8 @@ public class LawCase {
             private String name;
             @Column(name="time")
             private long time;
-
+            @OneToOne(cascade = CascadeType.ALL)
+            private Document document;
             public void setName(String name) {
                 this.name = name;
             }
@@ -39,5 +40,13 @@ public class LawCase {
             public long getTime() {
                 return time;
             }
-        }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+}
 
