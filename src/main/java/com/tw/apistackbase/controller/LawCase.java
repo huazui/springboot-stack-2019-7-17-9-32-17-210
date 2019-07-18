@@ -1,33 +1,43 @@
-package com.tw.apistackbase.Entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.oocl.web.sampleWebApp.jpaSample.entity;
+
+import javax.persistence.*;
+
 @Entity
 public class LawCase {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(name="name",length=255)
-    private String name;
-    @Column(name="time"))
-    private long  time;
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
+            public  LawCase(String name,long time) {
+                this.name = name;
+                this.time = time;
+            }
+           public LawCase(){}
 
-    public void setTime(long time) {
-        this.time = time;
-    }
+            @Id
+            @GeneratedValue(strategy = GenerationType.AUTO)
+            private Long id;
+            @Column(name="name",length=255)
+            private String name;
+            @Column(name="time")
+            private long time;
 
-    public long getTime() {
-        return time;
-    }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-    public String getName() {
-        return name;
-    }
-}
+           public Long getId() {
+            return id;
+          }
+
+          public String getName() {
+                return name;
+            }
+
+            public void setId(Long id) {
+                this.id = id;
+            }
+
+            public long getTime() {
+                return time;
+            }
+        }
+
