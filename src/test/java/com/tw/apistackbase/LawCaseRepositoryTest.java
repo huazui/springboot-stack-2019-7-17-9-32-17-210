@@ -1,5 +1,6 @@
 package com.oocl.web.sampleWebApp.jpaSample.repository;
 
+import com.oocl.web.sampleWebApp.jpaSample.entity.Document;
 import com.oocl.web.sampleWebApp.jpaSample.entity.LawCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,8 @@ public class LawCaseRepositoryTest {
 
   @Autowired
   CaseRepository caseRepository;
-
+@Autowired
+DocRepository docRepository;
   @Test
   public void test_should_return_user_when_the_user_exist() {
 //    given
@@ -59,14 +61,17 @@ public class LawCaseRepositoryTest {
   }
   @Test
   public void find_user_by_id(){
+      Document doc = new Document("major", "cijor");
+       docRepository.save(doc);
     LawCase lawCase = new LawCase();
     lawCase.setName("test");
+    lawCase.setDocument(doc);
     LawCase lawCase1=new LawCase();
     lawCase1.setName("another");
     long id=caseRepository.save(lawCase).getId();
     caseRepository.save(lawCase1);
     LawCase result = caseRepository.findById(id);
-    Assertions.assertEquals("test", result.getName());
+    Assertions.assertEquals("major", result.getDocument().getSbujectElement());
   }
 }
 
