@@ -21,7 +21,19 @@ public class LawCase {
             private long time;
             @OneToOne(cascade = CascadeType.ALL)
             private Document document;
-            public void setName(String name) {
+            @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+            @JoinColumn(name="case_id")
+            private Procuratorate procuratorate;
+
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
+    }
+
+    public void setName(String name) {
                 this.name = name;
             }
 

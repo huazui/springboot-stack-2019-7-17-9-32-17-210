@@ -16,6 +16,9 @@ public class Document {
     @Column(name="objectiveElement",length=255)
     private String objectiveElement;
 
+
+
+
     public long getId() {
         return id;
     }
